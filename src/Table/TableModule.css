@@ -1,0 +1,31 @@
+.addColumn {
+    position: absolute;
+    left: 5px;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 24px;
+    border: none;
+    padding: 6px 12px;
+    background-color: #567bf9;
+    opacity: 0;
+}
+
+.addColumn::after {
+    content: '';
+    position: absolute;
+    width: 800px;
+    height: 2px;
+    background: #567bf9;
+    left: 45px;
+    top: 36px;
+}
+.addColumn:hover {
+    opacity: 1;
+}
+
+.inputRoot {
+    padding: 10px 0 10px 10px;
+    border-radius: 8px;
+    border: double 2px lightgray;
+}
