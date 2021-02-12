@@ -1,15 +1,18 @@
 import {useEffect, useState} from 'react';
 
-function useGetUsers(url: string) {
+type UserState = unknown[];
+
+function useGetUsers(url: string) : [boolean, UserState] {
     const [data, setData] = useState([]);
-    const [isLoading, setLoading] = useState(false);
+    const [isLoading, setLoading] = useState(true);
     useEffect(() => {
-        setLoading(true)
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                setData(data)
-                setLoading(false)
+                setTimeout(() => {
+                    setData(data)
+                    setLoading(false)
+                }, 2000)
             })
             .catch((error) => console.log(error.message))
     }, [url])

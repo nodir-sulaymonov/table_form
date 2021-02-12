@@ -8,21 +8,21 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import './TableModule.css'
 import useGetUsers from './HTTPrequst';
+import Loader from './Loader';
 
 const TableComponent: FC = () => {
     const [isLoading, users] = useGetUsers('https://5ede19ffe36dd000166c7f2a.mockapi.io/v1/user/');
-    const [todo, setTodo] = useState();
+    const [todo, setTodo] = useState<string | undefined>();
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         const buttonElement = event.target as HTMLButtonElement;
         let id = buttonElement.dataset.id;
-        // @ts-ignore
         setTodo(id)
     }
     return (
         <>
             {isLoading ? (
-                <div>Loading...</div>
+                <Loader />
             ) : (
                 <TableContainer component={Paper}>
                     <Table aria-label="simple table">
